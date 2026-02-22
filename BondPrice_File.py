@@ -1,8 +1,12 @@
+def getBondPrice(y, face, couponRate, m, ppy):
+    periods=m*ppy
+    cf=face*couponRate/ppy
+    pvsum=0
+    for i in range(1,periods+1):
+        discount=(1+y/ppy)**(-i)
+        pvsum=pvsum+cf*discount
 
+    pvsum += face*(1+y/ppy)**(-periods)
+    return(pvsum)
+    
 
-def getBondPrice(y, face, couponRate, m, ppy=1):
-    if ppy == 1:
-        x = 2170604
-    if ppy == 2:
-        x = 2171686
-    return(x)
